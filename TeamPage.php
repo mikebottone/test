@@ -48,10 +48,11 @@ include 'db-connection.php';
 $teamNum = $_POST['teamNum'];
 $sql = "SELECT `s_id`, `Name`,`Status`, `Blockers`,`Time Log`,
 				`Team Health`, `Concerns`
-	 	FROM `team " .$teamNum. "`";
+	 	FROM `teams`
+	 	Where TeamNum = ?";
 
 						$stmt = $todoAppMySQLConnection->prepare($sql);
-						
+						$stmt->bind_param('i', $teamNum);
 						$stmt->execute();
 						$stmt->bind_result($sID, $Name, $Status, $Blockers, $Time, $Health, $Concerns);
 						
