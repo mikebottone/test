@@ -1,6 +1,7 @@
 
-INSERT INTO `team 1`
+INSERT INTO `teams`
 (`s_id`,
+`TeamNum`,
 `Name`,
 `Status`,
 `Blockers`,
@@ -9,6 +10,7 @@ INSERT INTO `team 1`
 `Concerns`)
 VALUES
 ('abcd1234',
+7,
 'jimmy smith',
 'I created the DB and did some refreshing on php',
 'Didn\'t know how to update clearDB',
