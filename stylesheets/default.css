@@ -1,0 +1,191 @@
+/* Applies to background behind the content column */
+body{
+  background-color: black;
+}
+
+/* Applies to entire content column */
+.default {
+  /*Sets size and colour of content column*/
+  max-width: 900px;
+  min-height: 100%;
+  background-color: white;
+
+  /* Sets design, size, and colour of content column borders */
+  border-left-style: solid;
+  border-right-style: solid;
+  border-width: 30px;
+  border-color: #FFD54F; /* From UWaterloo Brand Guidelines */
+
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 20px;
+  font-family: Helvetica;
+}
+
+.default body{
+  font-size: 15px;
+}
+
+.default p{
+  margin: 5px;
+  font-size: 20px;
+}
+
+.default ol{
+  margin: 30px;
+  font-size: 20px;
+}
+
+  /* Applies to headers */
+  .default h1{
+    font-size: 45px;
+  }
+
+  /* Applies to any images imported (usually just the UW logo */
+  .default img {
+    max-width: 499px;
+    max-height: 125px;
+    width: auto/9;
+    height: auto;
+    margin-bottom: 40px;
+    margin-top: 50px;
+  }
+
+  /* Applies to links, like when you write <a href...(which will appear as buttons) */
+  .default button {
+    background-color: black;
+    border-style: solid;
+    border-color: black;
+    border-radius: 12px;
+    padding: 1px 5px;
+    display: inherit;
+
+    font-family: Helvetica;
+    font-size: 20px;
+    text-decoration: none;
+    color: #FFD54F;
+  }
+
+  /* Specifies button behaviour when the cursor hovers over it */
+  .default button:hover {
+    cursor:pointer;
+    background-color: grey;
+  }
+
+  .default span {
+    font-size: 15px;
+    margin: 20px auto;
+    display: block;
+  }
+
+
+  .default input:hover {
+    cursor:pointer;
+    background-color: white;
+  }
+
+  .default select{
+    width: 30%;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;   
+
+    font-size: 20px; 
+  }
+
+  #grade{   
+    width:80%;
+       }
+
+  .default textarea{
+    resize:none; 
+    font-size: 15px;
+    font-family: Helvetica;
+
+  }
+
+  .default table{ 
+    text-align: center;
+
+    }
+  .default td {
+    vertical-align: baseline;
+  }  
+
+#Teamtxt {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#MsciTitle {
+  background-color: #FFD54F;
+    font-family: Times New Roman;
+    font-size: 45px;
+    color: black;
+    border: 3px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 6px;
+    width: 60%;
+    padding: 3px;
+}
+
+#TeamTable{
+  border-spacing: 85px 3px; /* horizontal # px | vertical # px */
+}
+
+#StatusFormTable {
+  border-spacing: 20px 0px;
+}
+
+.help-block {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: red;
+}
+  .default a {
+    background-color: black;
+    border-style: solid;
+    border-color: black;
+    border-radius: 12px;
+    padding: 5px 34px 5px 30px; 
+    max-width: 110px;
+    font-family: Helvetica;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center; 
+    text-decoration: none;
+    color: #FFD54F;
+
+    display: block;
+
+  }
+
+  .default a:hover {
+    cursor:pointer;
+    background-color: grey;
+    border-color: black;
+  }
+
+  .logout input[type=submit] {
+    background-color: #787878;
+    border-style: solid;
+    border-color: #787878;
+    border-radius: 12px;
+    padding: 15px 32px;
+    width: 20%;
+    display: block;
+
+    font-family: Helvetica;
+    font-size: 20px;
+    text-decoration: none;
+    color: #FFD54F;
+  }
+
+  .logout input:hover {
+    cursor:pointer;
+    background-color: white;
+    border-color: #787878;
+  }
+
