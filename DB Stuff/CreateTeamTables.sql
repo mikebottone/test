@@ -15,7 +15,7 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
 USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`team 1`
+-- Table `mydb`.`teams`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `teams` (
   `s_id` varchar(11) NOT NULL,
