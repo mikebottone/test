@@ -20,18 +20,8 @@ include 'db-connection.php';
     	padding: 2 5 2 5;
     	border-radius: 12px;
 	 	}
-	 	.column {
-    	float: left;
-    	width: 33.33%;
-    	    	
-		}
-
-		/* Clear floats after the columns */
-		.row:after {
-   			content: "";
-    		display: table;
-    		clear: both;
-			}
+	 	
+		
   	</style>
 </head>
 <body>
@@ -48,7 +38,7 @@ include 'db-connection.php';
 $teamNum = $_POST['teamNum'];
 $sql = "SELECT `s_id`, `Name`,`Status`, `Blockers`,`Time Log`,
 				`Team Health`, `Concerns`
-	 	FROM `teams`
+	 	FROM `reports`
 	 	Where TeamNum = ?";
 
 						$stmt = $todoAppMySQLConnection->prepare($sql);
@@ -72,22 +62,22 @@ $sql = "SELECT `s_id`, `Name`,`Status`, `Blockers`,`Time Log`,
 						printf ('%s', $Health);
 
 					//creates 3 equal width columns for Status, Blockers, and Concerns	
-					echo"<div class=\"row\"> 
-							<div class=\"column\">
+					echo"<div> 
+							<div>
 							<h2>Status</h2>
 							<p>";
 							printf ("%s",$Status); //status data
 					  echo "</p></div>"; //end column 1
 					 
 					  //start column 2
-					  echo "<div class=\"column\"> 
+					  echo "<div> 
 							<h2>Blockers</h2>
 							<p>";	
 							printf ("%s",$Blockers); //blocker data
 						 echo "</p></div>"; //end column 2
 					 
 					 //start column 3
-					  echo "<div class=\"column\"> 
+					  echo "<div> 
 							<h2>Concerns</h2>
 							<p>";	
 							printf ("%s",$Concerns); //blocker data

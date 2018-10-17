@@ -51,7 +51,7 @@ else // If our REMOTE_ADDR wasn't a localhost, we must be working remotely.
 		echo 'Failed to connect to MySQL: (' . $todoAppMySQLConnection->connect_errno . ') ' . $todoAppMySQLConnection->connect_error;
 		}
 		
-		echo '<p>' . $todoAppMySQLConnection->host_info . '</p>';
+		//echo '<p>' . $todoAppMySQLConnection->host_info . '</p>';
 	 
 }
 
@@ -75,7 +75,7 @@ if (isset($_GET['execute-db-setup'])) // Only enter this if our URL contains a "
 	echo '<h1>Database Configurations</h1>';
 	// STEP A - CREATE TASKS TABLE IN DATABASE
 	$sqlCreateTableStatement = "
-		CREATE TABLE IF NOT EXISTS `team 1`(
+		CREATE TABLE IF NOT EXISTS `reports`(
  		 `s_id` varchar(11) NOT NULL,
  		 `Name` VARCHAR(45) NULL DEFAULT NULL,
  		 `Status` MEDIUMTEXT NULL DEFAULT NULL,
@@ -97,7 +97,7 @@ if (isset($_GET['execute-db-setup'])) // Only enter this if our URL contains a "
 
 	// STEP B - ADD SAMPLE TASKS TO TABLE (that was created by step a)
 	$sqlPopulateTableStatement = "
-			INSERT INTO `team 1`
+			INSERT INTO `reports`
 			(`s_id`,
 			`Name`,
 			`Status`,
