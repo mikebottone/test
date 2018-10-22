@@ -1,2 +1,2 @@
 
-DROP TABLE `teams`;
+DROP TABLE `reports`;

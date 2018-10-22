@@ -1,5 +1,5 @@
 
-INSERT INTO `teams`
+INSERT INTO `reports`
 (`s_id`,
 `TeamNum`,
 `Name`,
