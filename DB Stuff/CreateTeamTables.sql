@@ -1,12 +1,12 @@
 
 CREATE TABLE IF NOT EXISTS `reports` (
-  `s_id` varchar(11) NOT NULL,
-  `TeamNum` INT(3) NULL DEFAULT NULL,
-  `Name` VARCHAR(45) NULL DEFAULT NULL,
-  `Status` MEDIUMTEXT NULL DEFAULT NULL,
-  `Blockers` MEDIUMTEXT NULL DEFAULT NULL,
-  `Time Log` INT(11) NULL DEFAULT NULL,
-  `Team Health` VARCHAR(45) NULL DEFAULT NULL,
-  `Concerns` MEDIUMTEXT NULL DEFAULT NULL,
-  PRIMARY KEY (`s_id`))
-
+    `ID` BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY
+    `s_id` varchar(8) NOT NULL,
+    `TeamNum` int(3) DEFAULT NULL,
+    `Name` varchar(45) DEFAULT NULL,
+    `Status` mediumtext,
+    `Blockers` mediumtext,
+    `Team Health` varchar(45) DEFAULT NULL,
+    `Concerns` mediumtext,
+    `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
