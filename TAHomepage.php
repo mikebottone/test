@@ -19,7 +19,7 @@ include 'db-connection.php';
 			echo"<tr>
 			<td id=\"Teamtxt\">Team " . $i ."</td>
     		<td> 
-    			<form action=\"TeamPage.php\" method=\"POST\"> 
+    			<form action=\"TATeamPage.php\" method=\"POST\"> 
     				<button type=\"submit\" value=\"". $i ."\" name=\"teamNum\"> 
     				View Status Reports
     				</button> 

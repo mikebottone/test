@@ -26,7 +26,7 @@ include 'db-connection.php';
 </head>
 <body>
 <div class="default">
-			<a href="TAHomepage.php"> Back </a>
+			<a href="StudentHomepage.php"> Back </a>
 
 			<center>
 				<h1>
@@ -36,15 +36,15 @@ include 'db-connection.php';
 			
 <?php 
 $teamNum = $_POST['teamNum'];
-$sql = "SELECT `s_id`, `Name`,`Status`, `Blockers`,`Time Log`,
-				`Team Health`, `Concerns`
+$sql = "SELECT `Name`,`Status`, `Blockers`,`Time Log`,
+				`Team Health`, `Concerns`, `time` 
 	 	FROM `reports`
 	 	Where TeamNum = ?";
 
 						$stmt = $todoAppMySQLConnection->prepare($sql);
 						$stmt->bind_param('i', $teamNum);
 						$stmt->execute();
-						$stmt->bind_result($sID, $Name, $Status, $Blockers, $Time, $Health, $Concerns);
+						$stmt->bind_result($Name, $Status, $Blockers, $Time, $Health, $Concerns,$time);
 						
 					$count = 0;	//see number of entries pulled from DB
 					while($stmt->fetch()){
@@ -52,8 +52,8 @@ $sql = "SELECT `s_id`, `Name`,`Status`, `Blockers`,`Time Log`,
 						echo "<div style=\"border: solid; 
 						border-radius: 6px; padding: 3 3 3 3;\">"; 
 
-						echo "<strong> ID: </strong> "; 
-						printf ('%s', $sID);
+						echo "<strong> Time Submitted: </strong> "; 
+						printf ('%s', $time);
 						echo "<br><strong> Name: </strong> ";
 						printf ('%s', $Name);
 						echo "<br><strong>Time Spent on Course: </strong> ";
@@ -64,21 +64,21 @@ $sql = "SELECT `s_id`, `Name`,`Status`, `Blockers`,`Time Log`,
 					//creates 3 equal width columns for Status, Blockers, and Concerns	
 					echo"<div> 
 							<div>
-							<h2>Status</h2>
+							<h2>Status:</h2>
 							<p>";
 							printf ("%s",$Status); //status data
 					  echo "</p></div>"; //end column 1
 					 
 					  //start column 2
 					  echo "<div> 
-							<h2>Blockers</h2>
+							<h2>Blockers:</h2>
 							<p>";	
 							printf ("%s",$Blockers); //blocker data
 						 echo "</p></div>"; //end column 2
 					 
 					 //start column 3
 					  echo "<div> 
-							<h2>Concerns</h2>
+							<h2>Concerns:</h2>
 							<p>";	
 							printf ("%s",$Concerns); //blocker data
 						 echo "</p></div>"; //end column 2

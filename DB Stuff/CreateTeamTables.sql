@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS `reports` (
     `Name` varchar(45) DEFAULT NULL,
     `Status` mediumtext,
     `Blockers` mediumtext,
+    `Time Log` int, 
     `Team Health` varchar(45) DEFAULT NULL,
     `Concerns` mediumtext,
     `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
