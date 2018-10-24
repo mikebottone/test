@@ -83,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		//need to input into db here
 
 		// Prepare a select statement
-        $sql = "SELECT s_id FROM `reports` WHERE s_id = ?";
+      /*  $sql = "SELECT s_id FROM `reports` WHERE s_id = ?";
         
         $stmt = $todoAppMySQLConnection->prepare($sql);
             // Bind variables to the prepared statement as parameters
@@ -100,7 +100,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                   echo "<script type='text/javascript'>alert('The secret code entered has already been used to submit a report.');</script>";                
                  }
                  else{
-                 $stmt->close();
+                 $stmt->close(); */
                  //inserts new entry given all fields have been filled in and user id has not been used before
                  $sql = "INSERT INTO `reports`
 					(`s_id`,
@@ -132,7 +132,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$s_id = $name = $status = $blockers = $time= $health = $concerns = "";
 				
 
-                 }
+                 
     }        
 
 }    
@@ -212,7 +212,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		}
 	 ?>
 	</select>
-	 <span class="help-block"><?php echo $time_err; ?></span>
+	 <span class="help-block"><?php echo $time_err; echo $time; ?></span>
 	</div>
 
 <!-- Q6 Team Health  -->
