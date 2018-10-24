@@ -3,13 +3,13 @@ include 'db-connection.php';
 ?>
 	 <html>
 		<head>
-			<title>TA Homepage</title>
+			<title>Student Homepage</title>
 	    <link rel="stylesheet" href="stylesheets/default.css">
-		</head>
+	   	</head>
 		
 		<body>
-
-			<div class="default">
+		<div class="default" id="Teamtxt">
+		<div> <a href="StatusReportInput.php"> New Status Report </a></div>
 			<center>
 				<h1 id="MsciTitle"> MSCI342 Status Reports </h1> 
 
@@ -19,7 +19,7 @@ include 'db-connection.php';
 			echo"<tr>
 			<td id=\"Teamtxt\">Team " . $i ."</td>
     		<td> 
-    			<form action=\"TeamPage.php\" method=\"POST\"> 
+    			<form action=\"StudentTeamPage.php\" method=\"POST\"> 
     				<button type=\"submit\" value=\"". $i ."\" name=\"teamNum\"> 
     				View Status Reports
     				</button> 
