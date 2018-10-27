@@ -36,15 +36,23 @@ include 'db-connection.php';
 			
 <?php 
 $teamNum = $_POST['teamNum'];
-$sql = "SELECT `Name`,`Status`, `Blockers`,`Time Log`,
-				`Team Health`, `Concerns`, `time` 
-	 	FROM `reports`
-	 	Where TeamNum = ?";
+$sql = "SELECT
+			    `reports`.`s_id`,
+			    `reports`.`Name`,
+			    `reports`.`Status`,
+			    `reports`.`Blockers`,
+			    `reports`.`Time Log`,
+			    `reports`.`Team Health`,
+			    `reports`.`Concerns`,
+			    `reports`.`time`,
+			    `studentinfo`.`TeamNum`
+			FROM `reports` , `studentinfo`
+				 	Where  `reports`.`s_id` = `studentinfo`.`s_id` and `TeamNum` = ?;";
 
 						$stmt = $todoAppMySQLConnection->prepare($sql);
 						$stmt->bind_param('i', $teamNum);
 						$stmt->execute();
-						$stmt->bind_result($Name, $Status, $Blockers, $Time, $Health, $Concerns,$time);
+						$stmt->bind_result($sID, $Name, $Status, $Blockers, $Time, $Health, $Concerns, $time, $Team);
 						
 					$count = 0;	//see number of entries pulled from DB
 					while($stmt->fetch()){

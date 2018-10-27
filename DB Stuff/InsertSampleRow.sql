@@ -1,7 +1,6 @@
 
 INSERT INTO `reports`
 (`s_id`,
-`TeamNum`,
 `Name`,
 `Status`,
 `Blockers`,
@@ -9,8 +8,7 @@ INSERT INTO `reports`
 `Team Health`,
 `Concerns`)
 VALUES
-('abcd1234',
-7,
+('GwwcPB2t',
 'jimmy smith',
 'I created the DB and did some refreshing on php',
 'Didn\'t know how to update clearDB',
