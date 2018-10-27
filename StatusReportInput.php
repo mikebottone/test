@@ -94,7 +94,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Store result
              mysqli_stmt_store_result($stmt);
                  
-             // Check if s_id exists, if yes then error message
+             // Check if s_id does not exist, if it does not exist then error message
                 if(mysqli_stmt_num_rows($stmt) == 0){ 
                   $stmt->close();
                   echo "<script type='text/javascript'>alert('The secret code entered is not valid. Please enter your valid code.');</script>";  
