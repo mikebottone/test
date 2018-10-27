@@ -2,7 +2,6 @@
 CREATE TABLE IF NOT EXISTS `reports` (
     `ID` BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `s_id` varchar(8) NOT NULL,
-    `TeamNum` int(3) DEFAULT NULL,
     `Name` varchar(45) DEFAULT NULL,
     `Status` mediumtext,
     `Blockers` mediumtext,

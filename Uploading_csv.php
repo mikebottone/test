@@ -26,14 +26,25 @@ if(isset($_POST["submit"]))
 }
 ?> 
 <html>
-<body> 
-<form method="post" enctype="multipart/form-data">
-   <div align="center">  
-    <label>Select CSV File:</label>
-    <input type="file" name="file" />
-    <br />
-    <input type="submit" name="submit" value="Import" class="btn btn-info" />
-   </div>
-  </form>
+<head>
+      <title>Upload File</title>
+       <link rel="stylesheet" href="stylesheets/default.css">
+   <style type="text/css">
+   .topRight{
+     Float: right;
+      border-bottom: none;
+    }
+   </style>
+</head>
+  <body class="default">
+        <div class="topRight"> <a href="TAHomepage.php"> Back </a></div>
+        <form method="post" enctype="multipart/form-data">
+           <div align="center">  
+            <label>Select CSV File:</label>
+            <input type="file" name="file" />
+            <br />
+            <input type="submit" name="submit" value="Import" class="btn btn-info" />
+           </div>
+          </form>
  </body>  
 </html>

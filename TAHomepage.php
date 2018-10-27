@@ -10,6 +10,14 @@ include 'db-connection.php';
 		<body>
 
 			<div class="default">
+				<div> <a href="Uploading_csv.php"> Upload CSV File </a>
+			<br>
+			<form method="POST" action="DownloadCSV.php">
+			<button type="submit" name="export"> Download All Reports </button> 
+			</form>	
+
+			</div>
+
 			<center>
 				<h1 id="MsciTitle"> MSCI342 Status Reports </h1> 
 

@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   	}	
 
 //ensures time log is entered
-  	if(empty(trim($_POST["time"]))){
+  	if(trim($_POST["time"])){
         $time_err = "Please fill in this field.";
     }
   	else{
@@ -83,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		//need to input into db here
 
 		// Prepare a select statement
-      /*  $sql = "SELECT s_id FROM `reports` WHERE s_id = ?";
+       $sql = "SELECT s_id FROM `studentinfo` WHERE s_id = ?";
         
         $stmt = $todoAppMySQLConnection->prepare($sql);
             // Bind variables to the prepared statement as parameters
@@ -94,13 +94,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Store result
              mysqli_stmt_store_result($stmt);
                  
-             // Check if s_id exists, if yes then error message
-                if(mysqli_stmt_num_rows($stmt) == 1){ 
+             // Check if s_id does not exist, if it does not exist then error message
+                if(mysqli_stmt_num_rows($stmt) == 0){ 
                   $stmt->close();
-                  echo "<script type='text/javascript'>alert('The secret code entered has already been used to submit a report.');</script>";                
+                  echo "<script type='text/javascript'>alert('The secret code entered is not valid. Please enter your valid code.');</script>";  
+                        $s_id_err = "Please enter a valid secret code.";        
                  }
                  else{
-                 $stmt->close(); */
+                 $stmt->close(); 
                  //inserts new entry given all fields have been filled in and user id has not been used before
                  $sql = "INSERT INTO `reports`
 					(`s_id`,
@@ -128,14 +129,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$stmt->close();
 
 				echo "<script type='text/javascript'>alert('Report successfully inputted!');</script>";
-	//clears all fields
-	$s_id = $name = $status = $blockers = $time= $health = $concerns = "";
+				//clears all fields
+				$s_id = $name = $status = $blockers = $time= $health = $concerns = "";
 				
 
                  
-    }        
-
-}    
+    			}        
+	}
+}	    
  ?>
 
 <html>
@@ -212,7 +213,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		}
 	 ?>
 	</select>
-	 <span class="help-block"><?php echo $time_err; echo $time; ?></span>
+	 <span class="help-block"><?php echo $time_err; ?></span>
 	</div>
 
 <!-- Q6 Team Health  -->
