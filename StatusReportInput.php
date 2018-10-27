@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   	}	
 
 //ensures time log is entered
-  	if(empty(trim($_POST["time"]))){
+  	if(trim($_POST["time"])){
         $time_err = "Please fill in this field.";
     }
   	else{
