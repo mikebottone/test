@@ -11,7 +11,7 @@ include 'db-connection.php';
 		<div class="default" id="Teamtxt">
 		<div> <a href="StatusReportInput.php"> New Status Report </a></div>
 			<center>
-				<h1 id="MsciTitle"> MSCI342 Status Reports </h1> 
+				<h1 id="MsciTitle"> MSCI 342 Status Reports </h1> 
 
 			<table id="TeamTable">
 <?php  
