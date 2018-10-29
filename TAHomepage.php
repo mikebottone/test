@@ -19,7 +19,7 @@ include 'db-connection.php';
 			</div>
 
 			<center>
-				<h1 id="MsciTitle"> MSCI342 Status Reports </h1> 
+				<h1 id="MsciTitle"> MSCI 342 Status Reports </h1> 
 
 			<table id="TeamTable">
 <?php  

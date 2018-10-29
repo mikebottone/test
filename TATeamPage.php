@@ -40,20 +40,21 @@ $teamNum = $_POST['teamNum'];
 			$sql = "SELECT
 			    `reports`.`s_id`,
 			    `reports`.`Name`,
+			    `reports`.`Week`,
 			    `reports`.`Status`,
 			    `reports`.`Blockers`,
-			    `reports`.`Time Log`,
 			    `reports`.`Team Health`,
 			    `reports`.`Concerns`,
 			    `reports`.`time`,
 			    `studentinfo`.`TeamNum`
 			FROM `reports` , `studentinfo`
-				 	Where  `reports`.`s_id` = `studentinfo`.`s_id` and `TeamNum` = ?;";
+			Where  `reports`.`s_id` = `studentinfo`.`s_id` and `TeamNum` = ?
+			ORDER BY `reports`.`time` DESC;";
 
 						$stmt = $todoAppMySQLConnection->prepare($sql);
 						$stmt->bind_param('i', $teamNum);
 						$stmt->execute();
-						$stmt->bind_result($sID, $Name, $Status, $Blockers, $Time, $Health, $Concerns, $time, $Team);
+						$stmt->bind_result($sID, $Name, $Week, $Status, $Blockers, $Health, $Concerns, $time, $Team);
 						
 					$count = 0;	//see number of entries pulled from DB
 					while($stmt->fetch()){
@@ -61,40 +62,41 @@ $teamNum = $_POST['teamNum'];
 						echo "<div style=\"border: solid; 
 						border-radius: 6px; padding: 3 3 3 3;\">"; 
 
-						echo "<strong> Time Submitted: </strong> ";
-						printf ('%s', $time);
-						echo "<br><strong> ID: </strong> "; 
-						printf ('%s', $sID);
-						echo "<br><strong> Name: </strong> ";
-						printf ('%s', $Name);
-						echo "<br><strong>Time Spent on Course: </strong> ";
-						printf ('%d', $Time);
-						echo "<br><strong> Team Health Rating: </strong> ";
-						printf ('%s', $Health);
 
-					//creates 3 equal width columns for Status, Blockers, and Concerns	
-					echo"<div> 
-							<div>
-							<h2>Status</h2>
-							<p>";
-							printf ("%s",$Status); //status data
-					  echo "</p></div>"; //end column 1
-					 
-					  //start column 2
-					  echo "<div> 
-							<h2>Blockers</h2>
-							<p>";	
-							printf ("%s",$Blockers); //blocker data
-						 echo "</p></div>"; //end column 2
-					 
-					 //start column 3
-					  echo "<div> 
-							<h2>Concerns</h2>
-							<p>";	
-							printf ("%s",$Concerns); //blocker data
-						 echo "</p></div>"; //end column 2
-					 echo '</div><br>'; //end row of 3 columns
-					echo "</div>";	//end team member division	
+						echo "<strong> Date: </strong> ";
+						printf ('%s', $Week);	//display week ending info
+						echo "<br><strong> Time Submitted: </strong> ";
+						printf ('%s', $time);	//display time submitted
+						echo "<br><strong> ID: </strong> "; 
+						printf ('%s', $sID);	//display sercret id
+						echo "<br><strong> Name: </strong> ";
+						printf ('%s', $Name);	//display name
+						echo "<br><strong> Team Health Rating: </strong> ";
+						printf ('%s', $Health);	//display team health rating 
+
+								//Status
+								echo"<div> 
+												<div>
+												<h2>Status</h2>
+												<p>";
+												printf ("%s",$Status); //status data
+										  echo "</p></div>"; 
+										 
+										  //Blockers
+										  echo "<div> 
+												<h2>Blockers</h2>
+												<p>";	
+												printf ("%s",$Blockers); //blocker data
+											 echo "</p></div>"; 
+										 
+										 //Concerns
+										  echo "<div> 
+												<h2>Concerns</h2>
+												<p>";	
+												printf ("%s",$Concerns); //blocker data
+											 echo "</p></div>"; 
+								 echo '</div><br>'; //end row of 3 columns
+						echo "</div>";	//end team member division	
 					$count++;
 					}
 				//notify user if there are no results	

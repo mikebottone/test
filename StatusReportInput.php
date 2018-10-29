@@ -2,11 +2,12 @@
 include 'db-connection.php';
 
 //value variables
-$s_id = $name = $status = $blockers = $time= $health = $concerns = ""; 
+$s_id = $name = $week = $status = $blockers = $health = $concerns = ""; 
 
 //error variables
-$s_id_err = $name_err = $status_err = $blockers_err = $time_err = "";
+$s_id_err = $name_err = $week_err = $status_err = $blockers_err = "";
 $health_err = $concerns_err = ""; 
+
 //track how mant fields are not filled in
 $err_count = 7;
 
@@ -30,6 +31,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   	else{
   		$name = trim($_POST["name"]);
   		$err_count = $err_count - 1;
+  	}
+
+//ensure week is entered
+	 if(empty(trim($_POST["week"]))){
+        $week_err = "Please fill in this field.";
+    }
+  	else{
+  		//keeps value in box if other field has error
+  		$week = trim($_POST["week"]);
+  		$err_count = $err_count - 1;
   	}	
 
 //ensures status is entered
@@ -50,14 +61,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   		$err_count = $err_count - 1;
   	}	
 
-//ensures time log is entered
-  	if(trim($_POST["time"])){
-        $time_err = "Please fill in this field.";
-    }
-  	else{
-  		$time = trim($_POST["time"]);
-  		$err_count = $err_count - 1;
-  	}	
 
 //ensures team health is entered
   if(!isset($_POST['health'])){	
@@ -106,22 +109,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                  $sql = "INSERT INTO `reports`
 					(`s_id`,
 					`Name`,
+					`Week`,
 					`Status`,
 					`Blockers`,
-					`Time Log`,
 					`Team Health`,
 					`Concerns`)
 					VALUES
 					(?,?,?,?,?,?,?);";
 
 				$stmt = $todoAppMySQLConnection->prepare($sql);
-				 $stmt->bind_param('ssssdss', $sID, $Name, $Status, $Blockers, $Time, $Health, $Concerns);
+				 $stmt->bind_param('sssssss', $sID, $Name, $Week, $Status, $Blockers, $Health, $Concerns);
 
 				$sID=$s_id;
 				$Name = $name;
+				$Week = $week;
 				$Status = $status;
 				$Blockers = $blockers;
-				$Time = $time;
 				$Health = $health;
 				$Concerns = $concerns;
 
@@ -130,7 +133,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 				echo "<script type='text/javascript'>alert('Report successfully inputted!');</script>";
 				//clears all fields
-				$s_id = $name = $status = $blockers = $time= $health = $concerns = "";
+				$s_id = $name = $week = $status = $blockers = $health = $concerns = "";
 				
 
                  
@@ -178,7 +181,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	 <span class="help-block"><?php echo $name_err; ?></span>
 	</div>
 
-<!-- Q3 Status  -->
+<!-- Q3 Week  -->
+	<div>
+	<h3>Week</h3>
+	<p>Enter the week ending Friday date. (Ex. week ending September 5, 2018) </p>
+	<input type="text" size="30" name="week" value="<?php echo $week; ?>">
+	 <span class="help-block"><?php echo $week_err; ?></span>
+	</div>	
+
+<!-- Q4 Status  -->
 	<div>
 	<h3>Status</h3>
 	<p>Enter all your tasks that are currently in-progress or that you have finished during this week for MSCI 342. Specify whether the task has been completed or is still in progress. </p>
@@ -186,7 +197,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	 <span class="help-block"><?php echo $status_err; ?></span>
 	</div>
 
-<!-- Q4 Blockers  -->
+<!-- Q5 Blockers  -->
 	<div>
 	<h3>Blockers</h3>
 	<p>Enter any blocking issues you are facing. If there are no blocking issues, enter "None".</p>
@@ -194,35 +205,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	 <span class="help-block"><?php echo $blockers_err; ?></span>
 	</div>
 
-<!-- Q5 Time log  -->
-	<div>
-	<h3>Time Log</h3>
-	<p>How many hours did you spend working on MSCI 342 this week outside of lecture/lab/tutorial time? (Ex. studying, project work, assignments, etc.)</p>
-	<select name="time">
-	<?php 
-		for ($i=0; $i <= 20; $i++) {
-			if ($i == $time){
-			echo " <option selected=\"selected\" value=".$i.">".$i."</option>
-			";
-			}
-			else {
-			echo " <option value=".$i.">".$i."</option>
-			";
-			}
-
-		}
-	 ?>
-	</select>
-	 <span class="help-block"><?php echo $time_err; ?></span>
-	</div>
-
 <!-- Q6 Team Health  -->
 	<div>
 	<h3>Team Health</h3>
-	<p>Rate how you feel about the team progress and team dynamic.</p>
+	<p>Rate how you feel about the team progress and team dynamic.</p><p><strong>Note: </strong>This information is confidential and will only be seen by the Instructor and TA.</p>
 	<table id="StatusFormTable">
 	<th><img src="images/VeryUnhappyEmoji.png" height="42" width="42"></th>
-	<th><img src="images/UnhappyEmoji.png" height="42" width="42"></th>
+	<th><img src="images/UnhappyEmoji.png" height="45" width="45"></th>
 	<th><img src="images/NeutralEmoji.png" height="45" width="45"></th>
 	<th><img src="images/HappyEmoji.png" height="47" width="47"></th>
 	<th><img src="images/VeryHappyEmoji.png" height="42" width="42"></th>	
