@@ -1,7 +1,12 @@
 <?php
 require('access.php');
 include 'db-connection.php';
+
+if ($logged_in == false) {
+	exit();
+}
 ?>
+
 	 <html>
 		<head>
 			<title>TA Homepage</title>
