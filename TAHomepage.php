@@ -1,4 +1,5 @@
 <?php
+require('access.php');
 include 'db-connection.php';
 ?>
 	 <html>
@@ -6,24 +7,24 @@ include 'db-connection.php';
 			<title>TA Homepage</title>
 	    <link rel="stylesheet" href="stylesheets/default.css">
 		</head>
-		
+
 		<body>
 
 			<div class="default">
 				<div> <a href="Uploading_csv.php"> Upload CSV File </a>
 			<br>
 			<form method="POST" action="DownloadCSV.php">
-			<button type="submit" name="export"> Download All Reports </button> 
-			</form>	
+			<button type="submit" name="export"> Download All Reports </button>
+			</form>
 
 			</div>
 
 			<center>
-				<h1 id="MsciTitle"> MSCI 342 Status Reports </h1> 
+				<h1 id="MsciTitle"> MSCI 342 Status Reports </h1>
 
 			<table id="TeamTable">
-<?php  
-	
+<?php
+
 		//selects the max team number indicating the number of teams created
 		$sql = "SELECT max(TeamNum) FROM studentinfo;";
 
@@ -35,26 +36,26 @@ include 'db-connection.php';
 		//checks if $NumOfTeams is greater than 0 indicating whether or not a csv has been uploaded
 		if ($NumOfTeams > 0){
 				//displays a button for the number of teams uploaded in the CSV
-				for ($i=1; $i <= $NumOfTeams; $i++) { 
+				for ($i=1; $i <= $NumOfTeams; $i++) {
 					echo"<tr>
 					<td id=\"Teamtxt\">Team " . $i ."</td>
-		    		<td> 
-		    			<form action=\"TATeamPage.php\" method=\"POST\"> 
-		    				<button type=\"submit\" value=\"". $i ."\" name=\"teamNum\"> 
+		    		<td>
+		    			<form action=\"TATeamPage.php\" method=\"POST\">
+		    				<button type=\"submit\" value=\"". $i ."\" name=\"teamNum\">
 		    				View Status Reports
-		    				</button> 
+		    				</button>
 		    			</form>
 		    		</td>
 		    		</tr>
-		    		"; 
-		    		
+		    		";
+
 				}
 		}
 		Else {Echo"There are currently no teams uploaded. Please upload a CSV."; }
-		$todoAppMySQLConnection->close();	
-?> 
+		$todoAppMySQLConnection->close();
+?>
 			</table>
-      
+
 	        </center>
 			</div>
 		</body>
