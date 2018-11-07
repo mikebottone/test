@@ -1,10 +1,8 @@
 <?php
-require('access.php');
 include 'db-connection.php';
-if ($logged_in == false) {
-	exit();
-}
- ?>
+require('access.php');
+if ($logged_in == True) {
+	?>
 <html>
 <head>
 	<title>Team <?php echo $_POST['teamNum']; ?> Status Reports </title>
@@ -24,8 +22,6 @@ if ($logged_in == false) {
     	padding: 2 5 2 5;
     	border-radius: 12px;
 	 	}
-
-
   	</style>
 </head>
 <body>
@@ -108,11 +104,9 @@ $teamNum = $_POST['teamNum'];
 						$stmt->close();
 						$todoAppMySQLConnection->close();
 ?>
-
-
-
 </div>
-
-
 </body>
 </html>
+<?php
+}
+?>

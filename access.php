@@ -3,6 +3,7 @@ session_start();
 include 'settings.php';
 $password = $ta_admin_password;
 $logged_in = false;
+$error = "";
 if(isset($_POST['submit_pass']) && $_POST['pass'])
 {
  $pass=$_POST['pass'];
