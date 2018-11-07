@@ -1,6 +1,32 @@
 <?php
 
-include 'dbConnection.php';
+include 'db-connection.php';
+?>
+<html>
+<head>
+      <title>Upload File</title>
+       <link rel="stylesheet" href="stylesheets/default.css">
+   <style type="text/css">
+   .topRight{
+     Float: right;
+      border-bottom: none;
+    }
+   </style>
+</head>
+<body class="default">
+        <div class="topRight"> <a href="TAHomepage.php"> Back </a></div>
+        <form method="post" enctype="multipart/form-data">
+           <div align="center">  
+            <label>Select CSV File:</label>
+            <input type="file" name="file" />
+            <br />
+            <input type="submit" name="submit" value="Import" class="btn btn-info" />
+           </div>
+          </form>
+ </body>  
+</html>
+
+<?php
 //mysqli_select_db($todoAppMySQLConnection, "sinfo") or die ("no database");
 if(isset($_POST["submit"]))
 {
@@ -27,6 +53,7 @@ if(isset($_POST["submit"]))
  }
  $sqlget = "SELECT * FROM studentinfo";
 $sqldata = mysqli_query($todoAppMySQLConnection, $sqlget) or die ('error getting data');
+echo "<div align=\"center\">";
 echo "<table>";
 echo "<tr><th>Name</th><th><th>s_id</th></th><th>TeamNum</th><th>Email</th></tr>";
 while($row = mysqli_fetch_array($sqldata,MYSQLI_ASSOC)){
@@ -41,17 +68,6 @@ while($row = mysqli_fetch_array($sqldata,MYSQLI_ASSOC)){
 	echo "</td></tr>";
 }
 echo "</table>";
+echo"</div>";
 }
 ?> 
-<html>
-<body> 
-<form method="post" enctype="multipart/form-data">
-   <div align="center">  
-    <label>Select CSV File:</label>
-    <input type="file" name="file" />
-    <br />
-    <input type="submit" name="submit" value="Import" class="btn btn-info" />
-   </div>
-  </form>
- </body>  
-</html>
