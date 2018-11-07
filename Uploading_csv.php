@@ -51,6 +51,7 @@ if(isset($_POST["submit"]))
    echo "<script>alert('Import done');</script>";
   }
  }
+}
  $sqlget = "SELECT * FROM studentinfo";
 $sqldata = mysqli_query($todoAppMySQLConnection, $sqlget) or die ('error getting data');
 echo "<div align=\"center\">";
@@ -69,5 +70,5 @@ while($row = mysqli_fetch_array($sqldata,MYSQLI_ASSOC)){
 }
 echo "</table>";
 echo"</div>";
-}
+
 ?> 
