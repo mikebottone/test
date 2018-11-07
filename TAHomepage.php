@@ -62,5 +62,6 @@ if ($logged_in == True) {
 				</body>
 			</html>
 <?php
+$logged_in = False;
 }
 ?>

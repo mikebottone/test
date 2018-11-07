@@ -108,5 +108,6 @@ $teamNum = $_POST['teamNum'];
 </body>
 </html>
 <?php
+$logged_in = False;
 }
 ?>
