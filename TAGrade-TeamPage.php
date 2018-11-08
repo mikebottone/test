@@ -20,23 +20,21 @@ include 'db-connection.php';
     	padding: 2 5 2 5;
     	border-radius: 12px;
 	 	}
-	 	#topright {
-			 float:right;
-		 }
+	 	
 		
   	</style>
 </head>
 <body>
 <div class="default">
-			<a href="TAHomepage.php"> Back </a>
-			<div id="topright">
-		 <a href="TAGrade-TeamPage.php">Add Grades </a>
-</div>
+
+		
 			<center>
 				<h1>
 					Team <?php echo $_POST['teamNum']; ?> Status Reports 
 				</h1> 
 			</center>
+
+<button type="button" onclick="alert('Hello world!')">Save and Submit</button>
 			
 <?php 
 $teamNum = $_POST['teamNum'];
@@ -65,7 +63,8 @@ $teamNum = $_POST['teamNum'];
 						//border around each team members entry
 						echo "<div style=\"border: solid; 
 						border-radius: 6px; padding: 3 3 3 3;\">"; 
-
+						
+						echo  "Add Grade:<input type=\"text\">";
 
 						echo "<strong> Date: </strong> ";
 						printf ('%s', $Week);	//display week ending info
@@ -103,13 +102,13 @@ $teamNum = $_POST['teamNum'];
 						echo "</div>";	//end team member division	
 					$count++;
 					}
-				//notify user if there are no results	
+
+           				//notify user if there are no results	
 			if ($count==0){	echo "There are no reports for this team.";}			
 						$stmt->close();
 						$todoAppMySQLConnection->close(); 
 ?>
-			
-		
+			<button type="button" onclick="alert('Hello world!')">Click Me!</button>
 
 </div>
 
