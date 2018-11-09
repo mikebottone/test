@@ -2,6 +2,7 @@
 include 'db-connection.php';
 require('access.php');
 if ($logged_in == True) {
+	$logged_in = False;
 	?>
 <html>
 <head>
@@ -109,5 +110,6 @@ $teamNum = $_POST['teamNum'];
 </html>
 <?php
 $logged_in = False;
+$_SESSION['password']='';
 }
 ?>

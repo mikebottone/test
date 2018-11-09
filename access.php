@@ -9,8 +9,8 @@ if(isset($_POST['submit_pass']) && $_POST['pass'])
  $pass=$_POST['pass'];
  if($pass==$password)
  {
-  $_SESSION['password']=$pass;
   $logged_in = true;
+
  }
  else
  {
@@ -20,7 +20,7 @@ if(isset($_POST['submit_pass']) && $_POST['pass'])
 
 if(isset($_POST['page_logout']))
 {
- unset($_SESSION['password']);
+$logged_in = False;
 }
 ?>
 
@@ -32,7 +32,7 @@ if(isset($_POST['page_logout']))
 <div id="wrapper">
 
 <?php
-if($_SESSION['password']==$password)
+if($pass==$password)
 {
  ?>
  <form method="post" action="" id="logout_form">
