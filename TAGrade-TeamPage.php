@@ -1,5 +1,7 @@
 <?php 
 include 'db-connection.php';
+session_start(); //start session to pass in the team number
+
  ?>
 <html>
 <head>
@@ -20,24 +22,28 @@ include 'db-connection.php';
     	padding: 2 5 2 5;
     	border-radius: 12px;
 	 	}
-	 	
+	 	#topright {
+			 float:right;
+		 }
+		
 		
   	</style>
 </head>
 <body>
 <div class="default">
 
-		
+			<a href="TAHomepage.php"> Back </a>
+					
 			<center>
 				<h1>
-					Team <?php echo $_POST['teamNum']; ?> Status Reports 
+					Team <?php echo $_SESSION["teamNum"]; ?> Status Reports 
 				</h1> 
 			</center>
 
-<button type="button" onclick="alert('Hello world!')">Save and Submit</button>
+
 			
 <?php 
-$teamNum = $_POST['teamNum'];
+$teamNum = $_SESSION["teamNum"];
 
 			$sql = "SELECT
 			    `reports`.`s_id`,
@@ -64,7 +70,8 @@ $teamNum = $_POST['teamNum'];
 						echo "<div style=\"border: solid; 
 						border-radius: 6px; padding: 3 3 3 3;\">"; 
 						
-						echo  "Add Grade:<input type=\"text\">";
+						//add a grade field input field
+						echo  "<div id=\"topright\"> Add Grade:<input type=\"text\" size=5 ></div>";
 
 						echo "<strong> Date: </strong> ";
 						printf ('%s', $Week);	//display week ending info
@@ -108,7 +115,7 @@ $teamNum = $_POST['teamNum'];
 						$stmt->close();
 						$todoAppMySQLConnection->close(); 
 ?>
-			<button type="button" onclick="alert('Hello world!')">Click Me!</button>
+			<button type="button" name="Save">Save and Submit</button>
 
 </div>
 

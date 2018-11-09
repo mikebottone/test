@@ -1,5 +1,8 @@
 <?php 
 include 'db-connection.php';
+session_start(); //start session to capture the team number
+$_SESSION["teamNum"] = $_POST['teamNum'];	//capture team number from the passed in URL 
+
  ?>
 <html>
 <head>
