@@ -26,7 +26,6 @@ session_start(); //start session to pass in the team number
 			 float:right;
 		 }
 		
-		
   	</style>
 </head>
 <body>
@@ -39,9 +38,8 @@ session_start(); //start session to pass in the team number
 					Team <?php echo $_SESSION["teamNum"]; ?> Status Reports 
 				</h1> 
 			</center>
-
-
-			
+		
+		
 <?php 
 $teamNum = $_SESSION["teamNum"];
 
@@ -71,9 +69,11 @@ $teamNum = $_SESSION["teamNum"];
 						border-radius: 6px; padding: 3 3 3 3;\">"; 
 						
 						//add a grade field input field
+						
+
 						echo  "<div id=\"topright\"> Add Grade:<input type=\"text\" size=5 ></div>";
 
-						echo "<strong> Date: </strong> ";
+						echo "<strong> Date: </strong>";
 						printf ('%s', $Week);	//display week ending info
 						echo "<br><strong> Time Submitted: </strong> ";
 						printf ('%s', $time);	//display time submitted
@@ -115,7 +115,8 @@ $teamNum = $_SESSION["teamNum"];
 						$stmt->close();
 						$todoAppMySQLConnection->close(); 
 ?>
-			<button type="button" name="Save">Save and Submit</button>
+			<button type="button" name="Save">Save and Submit</button> 
+
 
 </div>
 
