@@ -1,8 +1,25 @@
 <?php
 include 'db-connection.php';
-require('access.php');
-if ($logged_in == True) {
-	$logged_in = False;
+include 'settings.php';
+if(!isset($_SESSION)){session_start();}
+if($_SESSION["logged_in"]==False){
+	require('access.php');
+}
+else{
+	if(!isset($_SESSION)){session_start();}
+	if($_SESSION["logged_in"]==True)
+	{
+	 ?>
+	 <link rel="stylesheet" type="text/css" href="stylesheets/password.css">
+	 <form method="post" action="" id="logout_form">
+	  <input type="submit" name="page_logout" value="LOGOUT">
+	 </form>
+	 <?php
+	}
+	if(isset($_POST['page_logout']))
+	{
+	$_SESSION["logged_in"]=False;
+	}
 	?>
 			 <html>
 				<head>
@@ -63,7 +80,5 @@ if ($logged_in == True) {
 				</body>
 			</html>
 <?php
-$logged_in = False;
-$_SESSION['password']='';
 }
 ?>

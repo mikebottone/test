@@ -1,26 +1,28 @@
 <?php
-session_start();
+if(!isset($_SESSION)){session_start();}
 include 'settings.php';
 $password = $ta_admin_password;
-$logged_in = false;
 $error = "";
+$pass = "";
+$_SESSION["logged_in"]= False;
 if(isset($_POST['submit_pass']) && $_POST['pass'])
 {
  $pass=$_POST['pass'];
  if($pass==$password)
  {
-  $logged_in = true;
-
+  $_SESSION["logged_in"]=True;
+  header('Location: TAHomepage.php');
  }
  else
  {
   $error="Incorrect Pssword";
+  $_SESSION["logged_in"]=False;
  }
 }
 
 if(isset($_POST['page_logout']))
 {
-$logged_in = False;
+$_SESSION["logged_in"]=False;
 }
 ?>
 
@@ -32,7 +34,7 @@ $logged_in = False;
 <div id="wrapper">
 
 <?php
-if($pass==$password)
+if($_SESSION["logged_in"]==True)
 {
  ?>
  <form method="post" action="" id="logout_form">

@@ -1,8 +1,24 @@
 <?php
 include 'db-connection.php';
-require('access.php');
-if ($logged_in == True) {
-	$logged_in = False;
+if(!isset($_SESSION)){session_start();}
+if($_SESSION["logged_in"]==False){
+	require('access.php');
+}
+else{
+	if(!isset($_SESSION)){session_start();}
+	if($_SESSION["logged_in"]==True)
+	{
+	 ?>
+	 <link rel="stylesheet" type="text/css" href="stylesheets/password.css">
+	 <form method="post" action="" id="logout_form">
+	  <input type="submit" name="page_logout" value="LOGOUT">
+	 </form>
+	 <?php
+	}
+	if(isset($_POST['page_logout']))
+	{
+	$_SESSION["logged_in"]=False;
+	}
 	?>
 <html>
 <head>
@@ -104,12 +120,8 @@ $teamNum = $_POST['teamNum'];
 			if ($count==0){	echo "There are no reports for this team.";}
 						$stmt->close();
 						$todoAppMySQLConnection->close();
+}
 ?>
 </div>
 </body>
 </html>
-<?php
-$logged_in = False;
-$_SESSION['password']='';
-}
-?>
