@@ -15,7 +15,7 @@ if(isset($_POST['submit_pass']) && $_POST['pass'])
  }
  else
  {
-  $error="Incorrect Password";
+  $error="Incorrect Pssword";
   $_SESSION["logged_in"]=False;
  }
 }
@@ -47,7 +47,7 @@ else
  ?>
  <form method="post" action="" id="login_form">
   <h1>LOGIN TO PROCEED</h1>
-  <input type="password" name="pass" placeholder="Enter Password">
+  <input type="password" name="pass" placeholder="*******">
   <input type="submit" name="submit_pass" value="Login">
   <p><font style="color:red;"><?php echo $error;?></font></p>
  </form>
@@ -58,5 +58,3 @@ else
 </div>
 </body>
 </html>
-
-
