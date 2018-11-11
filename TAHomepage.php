@@ -19,6 +19,7 @@ else{
 	if(isset($_POST['page_logout']))
 	{
 	$_SESSION["logged_in"]=False;
+	header("Location: access.php"); // return to login screen
 	}
 	?>
 			 <html>
