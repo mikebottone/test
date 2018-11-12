@@ -193,7 +193,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<div>
 	<h3>Status</h3>
 	<p>Enter all your tasks that are currently in-progress or that you have finished during this week for MSCI 342. Specify whether the task has been completed or is still in progress. </p>
-	<textarea name="status" rows="10" cols="100" > <?php echo $status; ?></textarea>
+	<textarea name="status" style = "width:100%; height: 150px"> <?php echo $status; ?></textarea>
 	 <span class="help-block"><?php echo $status_err; ?></span>
 	</div>
 
@@ -201,7 +201,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<div>
 	<h3>Blockers</h3>
 	<p>Enter any blocking issues you are facing. If there are no blocking issues, enter "None".</p>
-	<textarea name="blockers" style="width:850px ; height:50px;"> <?php echo $blockers; ?> </textarea>
+	<textarea name="blockers" style="width: 100% ; height:50px;"> <?php echo $blockers; ?> </textarea>
 	 <span class="help-block"><?php echo $blockers_err; ?></span>
 	</div>
 
@@ -209,21 +209,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<div>
 	<h3>Team Health</h3>
 	<p>Rate how you feel about the team progress and team dynamic.</p><p><strong>Note: </strong>This information is confidential and will only be seen by the Instructor and TA.</p>
-	<table id="StatusFormTable">
-	<th><img src="images/VeryUnhappyEmoji.png" height="42" width="42"></th>
-	<th><img src="images/UnhappyEmoji.png" height="45" width="45"></th>
-	<th><img src="images/NeutralEmoji.png" height="45" width="45"></th>
-	<th><img src="images/HappyEmoji.png" height="47" width="47"></th>
-	<th><img src="images/VeryHappyEmoji.png" height="42" width="42"></th>	
+	<center>
+	<table style="width:100%" cellpadding = "10" id="StatusFormTable" >
+	<th><img src="images/VeryUnhappy.png" height="60" width="60"></th>
+	<th><img src="images/Unhappy.png" height="60" width="60"></th>
+	<th><img src="images/Neutral.png" height="60" width="60"></th>
+	<th><img src="images/Happy.png" height="60" width="60"></th>
+	<th><img src="images/VeryHappy.png" height="60" width="60"></th>	
 	<tr>
-	<td><input type="radio" name="health" value="Very Unhappy" <?php if ( "Very Unhappy" == $health) echo 'checked="checked"'; ?>> Very Unhappy</td> 
-	<td><input type="radio" name="health" value="Unhappy" <?php if ( "Unhappy" == $health) echo 'checked="checked"'; ?> > Unhappy</td>
-	<td><input type="radio" name="health" value="Neutral" <?php if ( "Neutral" == $health) echo 'checked="checked"'; ?>> Neutral</td>
-	<td><input type="radio" name="health" value="Happy" <?php if ( "Happy" == $health) echo 'checked="checked"'; ?>> Happy</td>
-	<td><input type="radio" name="health" value="Very Happy" <?php if ( "Very Happy" == $health) echo 'checked="checked"'; ?>>Very Happy</td>
+	<td><input type="radio" name="health" value="Very Unhappy" <?php if ( "Very Unhappy" == $health) echo 'checked="checked"'; ?>></td> 
+	<td><input type="radio" name="health" value="Unhappy" <?php if ( "Unhappy" == $health) echo 'checked="checked"'; ?>></td>
+	<td><input type="radio" name="health" value="Neutral" <?php if ( "Neutral" == $health) echo 'checked="checked"'; ?>></td>
+	<td><input type="radio" name="health" value="Happy" <?php if ( "Happy" == $health) echo 'checked="checked"'; ?>> </td>
+	<td><input type="radio" name="health" value="Very Happy" <?php if ( "Very Happy" == $health) echo 'checked="checked"'; ?>></td>
+	</tr>
+	<tr>
+	<td>Very Unhappy</td> 
+	<td>Unhappy</td>
+	<td>Neutral</td>
+	<td>Happy</td>
+	<td>Very Happy</td>
 	<!-- {if ( "Unhappy" == $health) echo 'checked="checked"';} keeps value checked after submittal if other field is not inputted -->
 	</tr>
 	</table>
+	</center>
 	 <span class="help-block"><?php echo $health_err; ?></span>	
 	</div>
 
@@ -231,7 +240,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<div>
 	<h3>Concerns</h3>
 	<p>Enter any concerns regarding your group or the project. If you have no concerns, please enter "None".</p> <p><strong>Note: </strong>This information is confidential and will only be seen by the Instructor and TA.</p>
-	<textarea name="concerns" style="width:850px; height:100px;"><?php echo $concerns; ?></textarea>
+	<textarea name="concerns" style="width:100%; height:100px;"><?php echo $concerns; ?></textarea>
 	 <span class="help-block"><?php echo $concerns_err; ?></span>
 	</div>	
 	<br>
