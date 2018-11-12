@@ -36,9 +36,9 @@ include 'db-connection.php';
 <?php
 
 if(isset($_POST["delete"])){
-  $sql = " DELETE FROM student_info";
-  $sql2 = "DELETE FROM reports";
-  $sql3 = "DELETE FROM  Grades";
+  $sql = " DELETE FROM `studentinfo`";
+  $sql2 = "DELETE FROM `reports`";
+  $sql3 = "DELETE FROM  `Grades` ";
 
 $stmt1 = $todoAppMySQLConnection->prepare($sql);
 $stmt2= $todoAppMySQLConnection->prepare($sql2);
