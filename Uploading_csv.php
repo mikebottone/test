@@ -14,6 +14,10 @@ include 'db-connection.php';
    </style>
 </head>
 <body class="default">
+        
+        <form action="Uploading_csv.php" method="POST">
+       <button type="submit" name="delete" align="right">Reset Project</button> 
+       </form>
         <div class="topRight"> <a href="TAHomepage.php"> Back </a></div>
         <form method="post" enctype="multipart/form-data">
            <div align="center">  
@@ -21,12 +25,36 @@ include 'db-connection.php';
             <input type="file" name="file" />
             <br />
             <input type="submit" name="submit" value="Import" class="btn btn-info" />
+    
+                        
+
            </div>
           </form>
  </body>  
 </html>
 
 <?php
+
+if(isset($_POST["delete"])){
+  $sql = " DELETE FROM student_info";
+  $sql2 = "DELETE FROM reports";
+  $sql3 = "DELETE FROM  Grades";
+
+$stmt1 = $todoAppMySQLConnection->prepare($sql);
+$stmt2= $todoAppMySQLConnection->prepare($sql2);
+$stmt3= $todoAppMySQLConnection->prepare($sql3);
+
+$stmt1->execute();
+$stmt1->close();
+
+$stmt2->execute();
+$stmt2->close();
+
+$stmt3->execute();
+$stmt3->close();
+
+
+}
 //mysqli_select_db($todoAppMySQLConnection, "sinfo") or die ("no database");
 if(isset($_POST["submit"]))
 {
