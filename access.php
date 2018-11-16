@@ -45,18 +45,18 @@ if($_SESSION["logged_in"]==True)
 else
 {
  ?>
- <center>
+
  <form method="post" action="" id="login_form">
   <h1>LOGIN TO PROCEED</h1>
   <input type="password" name="pass" placeholder="Enter Password">
   <input type="submit" name="submit_pass" value="Login">
   <p><font style="color:red;"><?php echo $error;?></font></p>
  </form>
- </center
+
  <?php
 }
 ?>
 
 </div>
-</body>
+</body>	
 </html>

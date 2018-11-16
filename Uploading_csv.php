@@ -22,8 +22,9 @@ include 'db-connection.php';
         <form method="post" enctype="multipart/form-data">
            <div align="center">  
             <label>Select CSV File:</label>
+              
             <input type="file" name="file" />
-            <br />
+            <br><br>
             <input type="submit" name="submit" value="Import" class="btn btn-info" />
     
                         
