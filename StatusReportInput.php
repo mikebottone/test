@@ -184,7 +184,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!-- Q3 Week  -->
 	<div>
 	<h3>Week</h3>
-	<p>Enter the week ending Friday date. (Ex. week ending September 5, 2018) </p>
+	<p>Enter the week ending date. (Ex. September 5, 2018) </p>
 	<input type="text" size="30" name="week" value="<?php echo $week; ?>">
 	 <span class="help-block"><?php echo $week_err; ?></span>
 	</div>	

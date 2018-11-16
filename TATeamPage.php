@@ -81,7 +81,7 @@ $teamNum = $_POST['teamNum'];
 						border-radius: 6px; padding: 3 3 3 3;\">";
 
 
-						echo "<strong> Date: </strong> ";
+						echo "<strong> Week Ending: </strong> ";
 						printf ('%s', $Week);	//display week ending info
 						echo "<br><strong> Time Submitted: </strong> ";
 						printf ('%s', $time);	//display time submitted

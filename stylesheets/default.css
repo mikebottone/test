@@ -77,13 +77,48 @@ body{
     margin: 20px auto;
     display: block;
   }
+   
+  .default input{
+     background-color: black;
+    border-style: solid;
+    border-color: black;
+    border-radius: 12px;
+    padding: 1px 5px;
+    display: inherit;
 
+    font-family: Helvetica;
+    font-size: 20px;
+    text-decoration: none;
+    color: #FFD54F;
+  }
 
   .default input:hover {
+    cursor:pointer;
+    background-color: grey;
+  }
+
+.default input[type="text"]{
+    background-color: white;
+    border-style: solid;
+    border-color: none;
+   border-width: 0.5px;
+   border-radius: 0px;
+   }
+   .default input[type="text"]:hover {
     cursor:pointer;
     background-color: white;
   }
 
+.default input[type="file"]{
+    background-color: white;
+    border-style: none;
+   display: inline-block;
+   color: black;
+      }
+   .default input[type="file"]:hover {
+    cursor:pointer;
+    background-color: white;
+  }
   .default select{
     width: 30%;
     -webkit-border-radius: 12px;
@@ -106,8 +141,8 @@ body{
 
   .default table{ 
     text-align: center;
-
-    }
+   }
+   
   .default td {
     vertical-align: baseline;
   }  
@@ -168,24 +203,5 @@ body{
     border-color: black;
   }
 
-  .logout input[type=submit] {
-    background-color: #787878;
-    border-style: solid;
-    border-color: #787878;
-    border-radius: 12px;
-    padding: 15px 32px;
-    width: 20%;
-    display: block;
 
-    font-family: Helvetica;
-    font-size: 20px;
-    text-decoration: none;
-    color: #FFD54F;
-  }
-
-  .logout input:hover {
-    cursor:pointer;
-    background-color: white;
-    border-color: #787878;
-  }
 
