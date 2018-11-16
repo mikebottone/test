@@ -9,7 +9,7 @@ CREATE TABLE `reports` (
   `Concerns` mediumtext,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Label` varchar(100) DEFAULT NULL,
-  `Grade` varchar(2) DEFAULT NULL,
+  `Grade` INT(2) DEFAULT NULL,
   `Comments` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
