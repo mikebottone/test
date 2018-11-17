@@ -5,7 +5,7 @@ session_start(); //start session to pass in the team number
  ?>
 <html>
 <head>
-	<title>Team <?php echo $_POST['teamNum']; ?> Status Reports </title>
+	<title>Team <?php echo $_SESSION['teamNum']; ?> Status Reports </title>
 	<link rel="stylesheet" href="stylesheets/default.css">
 	 <style type="text/css">
 	 	h2{
@@ -71,12 +71,27 @@ $teamNum = $_SESSION["teamNum"];
 						//add a grade field input field
 						
 
-						echo  "<div id=\"topright\"> Add Grade:<input type=\"text\" size=5 ></div>";
+								
 
 						echo "<strong> Date: </strong>";
 						printf ('%s', $Week);	//display week ending info
 						echo "<br><strong> Time Submitted: </strong> ";
 						printf ('%s', $time);	//display time submitted
+
+						//comments input for TA
+						/*
+						//first option: 
+						echo "<div id=\"topright\">
+						Comments:<input type=\"text\" name=\"comments\" size=30 >
+						</div>";
+						*/
+
+						
+						//second option:
+						echo "<div id=\"topright\">
+								Comments: <textarea name=\"comments\" rows=\"4\" cols=\"30\"></textarea>
+							</div>";						
+
 						echo "<br><strong> ID: </strong> "; 
 						printf ('%s', $sID);	//display sercret id
 						echo "<br><strong> Name: </strong> ";
