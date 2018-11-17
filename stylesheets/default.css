@@ -103,6 +103,7 @@ body{
     border-color: none;
    border-width: 0.5px;
    border-radius: 0px;
+   color: black;
    }
    .default input[type="text"]:hover {
     cursor:pointer;
