@@ -63,66 +63,72 @@ else // If our REMOTE_ADDR wasn't a localhost, we must be working remotely.
 //======================================================================
 
 if (isset($_GET['setup-db'])) // Only enter this if our URL contains a "setup-db" parameter
-{
+{	
+	echo "<div style=\"border: solid;
+						border-radius: 6px; padding: 3 3 3 3;\">";
+
 	echo '<h1>Database Configurations</h1>';
 	echo '<form method="GET" action="?setup-db">';
-	echo '<p>Are you sure you want to erase your current remote database and reconfigure it with a fresh schema?</br></p>';
+	echo '<p>Are you sure you want to configure your database with a fresh schema?</br></p>';
 	echo '<input name="execute-db-setup" type="submit" value="Yes">' . '</form>';
+
+	echo "<br></div>";
 }
 
 if (isset($_GET['execute-db-setup'])) // Only enter this if our URL contains a "setup-db" parameter
-{	
+{	echo "<div style=\"border: solid;
+						border-radius: 6px; padding: 3 3 3 3;\">";
+
 	echo '<h1>Database Configurations</h1>';
-	// STEP A - CREATE TASKS TABLE IN DATABASE
+
+
+	// STEP A - CREATE REPORTS TABLE IN DATABASE
 	$sqlCreateTableStatement = "
-		CREATE TABLE IF NOT EXISTS `reports`(
- 		 `s_id` varchar(11) NOT NULL,
- 		 `Name` VARCHAR(45) NULL DEFAULT NULL,
- 		 `Status` MEDIUMTEXT NULL DEFAULT NULL,
- 		 `Blockers` MEDIUMTEXT NULL DEFAULT NULL,
-  		`Time Log` INT(11) NULL DEFAULT NULL,
- 		 `Team Health` VARCHAR(45) NULL DEFAULT NULL,
- 		 `Concerns` MEDIUMTEXT NULL DEFAULT NULL,
- 		 PRIMARY KEY (`s_id`)
-	);";
+		CREATE TABLE `reports` (
+			  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+			  `s_id` varchar(8) NOT NULL,
+			  `Name` varchar(45) DEFAULT NULL,
+			  `Week` varchar(100) DEFAULT NULL,
+			  `Status` mediumtext,
+			  `Blockers` mediumtext,
+			  `Team Health` varchar(45) DEFAULT NULL,
+			  `Concerns` mediumtext,
+			  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+			  `Label` varchar(100) DEFAULT NULL,
+			  `Grade` INT(3) DEFAULT NULL,
+			  `Comments` varchar(200) DEFAULT NULL,
+			  PRIMARY KEY (`ID`)
+		) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
+
 	if (mysqli_query($todoAppMySQLConnection, $sqlCreateTableStatement))
 	{
-		echo '</br>StepA: Successfully configured database.</br>';
+		echo 'StepA: Successfully added Reports table into the database.</br>';
 	} 
 	else 
 	{
-		echo '</br>StepA: Looks like there was an error :(</br>';
-		echo '</br>' . mysqli_error($todoAppMySQLConnection);
+		echo '</br>StepA: Looks like there was an error. </br>';
+		echo mysqli_error($todoAppMySQLConnection) . "<br>";
 	}
 
-	// STEP B - ADD SAMPLE TASKS TO TABLE (that was created by step a)
-	$sqlPopulateTableStatement = "
-			INSERT INTO `reports`
-			(`s_id`,
-			`Name`,
-			`Status`,
-			`Blockers`,
-			`Time Log`,
-			`Team Health`,
-			`Concerns`)
-			VALUES
-			('abcd1234',
-			'jimmy smith',
-			'I created the DB and did some refreshing on php',
-			'Didn\'t know how to update clearDB',
-			9,
-			'happy',
-			'none');
-			";
+	// STEP B - CREATES STUDENTINFO TABLE IN DATABASE
+	$sqlCreateTable2Statement = "
+			CREATE TABLE `studentinfo` (
+		 	 	`Name` varchar(255) DEFAULT NULL,
+		  		`s_id` varchar(255) NOT NULL,
+		  		`TeamNum` int(11) DEFAULT NULL,
+		  		`Email` varchar(255) NOT NULL,
+		  		PRIMARY KEY (`s_id`)
+			);";
 
-	if (mysqli_query($todoAppMySQLConnection, $sqlPopulateTableStatement))
+	if (mysqli_query($todoAppMySQLConnection, $sqlCreateTable2Statement))
 	{
-		echo '</br>Step B: Successfully added sample tasks to task table in database.</br>';
+		echo '</br>Step B: Successfully added StudentInfo table into the database.</br>';
 	} 
 	else 
 	{
-		echo '</br>Step B: Looks like there was an error :(</br>';
-		echo '</br>' . mysqli_error($todoAppMySQLConnection);
+		echo '<br>Step B: Looks like there was an error. </br>';
+		echo  mysqli_error($todoAppMySQLConnection);
 	}
+	echo "</div>";
 }
 ?>
